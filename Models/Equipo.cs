@@ -2,17 +2,17 @@ namespace TP6.Models;
 
 public class Equipo
 {
-     private int _idEquipo;
+    private int _idEquipo;
     private string _nombre;
     private string _escudo;
     private string _camiseta;
     private string _continente;
     private int _copasGanadas;
 
-    public Equipo(int idEquipo, string nombres, string escudo, string camiseta, string continente, int copasGanadas)
+    public Equipo(int idEquipo, string nombre, string escudo, string camiseta, string continente, int copasGanadas)
     {
         _idEquipo = idEquipo;
-        _nombre = nombres;
+        _nombre = nombre;
         _escudo = escudo;
         _camiseta = camiseta;
         _continente = continente;
@@ -22,10 +22,10 @@ public class Equipo
     public Equipo()
     {
         _idEquipo = 0;
-        _nombre = nombres;
-        _escudo = escudo;
-        _camiseta = camiseta;
-        _continente = continente;
+        _nombre = "";
+        _escudo = "";
+        _camiseta = "";
+        _continente = "";
         _copasGanadas = 0;
     }
 
