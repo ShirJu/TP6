@@ -36,15 +36,26 @@ public class HomeController : Controller
 
     public IActionResult AgregarJugador(int IdEquipo)
     {
-        ViewBag.Lista = BD.IdEquipo;
+        ViewBag.Lista = IdEquipo;
 
-         return View();
+         return View("CrearJugador");
     }
+
+   [HttpPost] 
+
+   public IActionResult GuardarJugador(Jugador Jug)
+     {
+        BD.AgregarJugador(Jug);
+         
+        ViewBag.MiEquipo=BD. VerInfoEquipo(Jug.IdEquipo);
+        return View("VerDetalleEquipo");
+     }
 
      public IActionResult EliminarJugador(int IdJugador, int IdEquipo)
      {
-        BD.EliminarPelicula(id);
-        return RedirectToAction("Index");
+        BD.EliminarJugador(IdJugador);
+        ViewBag.MiEquipo=BD.VerInfoEquipo(IdEquipo);
+        return View("VerDetalleEquipo");
     }
 
     public IActionResult Privacy()
@@ -59,4 +70,10 @@ public class HomeController : Controller
     {
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
+
+     
+
+
+
+    
 }

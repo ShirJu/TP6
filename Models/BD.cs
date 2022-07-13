@@ -3,33 +3,36 @@ using System.Data.SqlClient;
 using Dapper;
 using System.Collections.Generic;
 
-public class BD {
+public class BD 
+{
 
     private static string _connectionString = 
-        @"Server=A-AMI-202;DataBase=Qatar22;Trusted_Connection=True";
+        @"Server=A-AMI-202;DataBase=Qatar2022;Trusted_Connection=True";
 
     
 
-    public static void AgregarJugador(Jugador Jug ){
-
-        string sql = "INSERT INTO Jugadores  (IdEquipo,Nombre,FechaNacimiento) VALUES (@pNombre, pIdEquipo, pFechaNacimiento,)";
+    public static void  AgregarJugador(Jugador Jug)
+    {
+        
+        string sql = "INSERT INTO Jugadores (IdEquipo,Nombre,FechaNacimiento) VALUES (@pNombre, pIdEquipo, pFechaNacimiento,)";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
             db.Execute(sql, new { pNombre = Jug.Nombre, pIdEquipo = Jug.IdEquipo,pFechaNacimiento = Jug.FechaNacimiento});
-        }
-       
+        } 
+        
     }
 
-    public static void EliminarJugador(int IdJugador){
+    public static void EliminarJugador(int IdJugador)
+    {
         string sql = "DELETE FROM Jugadores WHERE IdJugador = @pIdJugador";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
             db.Execute(sql, new { pIdJugador = IdJugador });
         }
     }
-public static Equipo VerInfoEquipo(int IdEquipo)
-{
-    Equipo MiEquipo=null;
+    public static Equipo VerInfoEquipo(int IdEquipo)
+    {
+        Equipo MiEquipo;
        using (SqlConnection db = new SqlConnection(_connectionString))
        {
         string sql = "SELECT * FROM Equipo WHERE IdEquipo=@pIdEquipo ";
@@ -38,9 +41,9 @@ public static Equipo VerInfoEquipo(int IdEquipo)
        }
         return MiEquipo;
     }
-   public static Jugador VerInfoJugador(int IdJugador)
-{
-    Jugador MiJugador=null;
+    public static Jugador VerInfoJugador(int IdJugador)
+    {
+        Jugador MiJugador;
        using (SqlConnection db = new SqlConnection(_connectionString))
        {
         string sql = "SELECT * FROM Jugadores WHERE IdJugador=@pIdJugador ";
@@ -49,15 +52,22 @@ public static Equipo VerInfoEquipo(int IdEquipo)
        }
         return MiJugador;
     }
-    public static void Equipo ListarEquipos()
-{
-    
+    public static List<Equipo>  ListarEquipos()
+    {
        using (SqlConnection db = new SqlConnection(_connectionString))
        {
-        string sql = "SELECT * FROM Equipo";
-        _ListadoEquipos= db.Query<Equipo>(sql).ToList();
+        string sql = "SELECT * FROM Equipos";
+        return db.Query<Equipo>(sql).ToList();
        
        }
 
-}
+    }
+    public static List<Jugador> ListarJugadores(int IdEquipo)
+    {
+       using (SqlConnection db = new SqlConnection(_connectionString))
+       {
+        string sql = "SELECT * FROM Jugadores";
+       return db.Query<Jugador>(sql).ToList();
+       }
+    }
 }
