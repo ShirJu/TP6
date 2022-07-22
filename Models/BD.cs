@@ -7,7 +7,7 @@ public class BD
 {
 
     private static string _connectionString = 
-        @"Server=A-CIDI-111;DataBase=Qatar2022;Trusted_Connection=True";
+        @"Server=.\SQLEXPRESS;DataBase=Qatar2022;Trusted_Connection=True";
 
     
 
