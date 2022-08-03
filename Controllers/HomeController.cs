@@ -21,24 +21,25 @@ public class HomeController : Controller
 
     public IActionResult VerDetalleEquipo(int IdEquipo)
     {
-        ViewBag.DatosEquipo = BD.VerInfoEquipo(IdEquipo);
+          ViewBag.DetalleEquipo = BD.VerDetalleEquipo(IdEquipo);
         ViewBag.ListaJugadores = BD.ListarJugadores(IdEquipo);
+      
 
-        return View();
+        return View("VerDetalleEquipo");
     }
 
     public IActionResult VerDetalleJugador(int IdJugador)
     {
         ViewBag.DatosJugador = BD.VerInfoJugador(IdJugador);
 
-        return View();
+        return View("VerDetalleJugador");
     }
 
     public IActionResult AgregarJugador(int IdEquipo)
     {
         ViewBag.Lista = IdEquipo;
 
-         return View("CrearJugador");
+         return View("AgregarJugador");
     }
 
    [HttpPost] 
@@ -47,14 +48,14 @@ public class HomeController : Controller
      {
         BD.AgregarJugador(Jug);
          
-        ViewBag.MiEquipo=BD. VerInfoEquipo(Jug.IdEquipo);
+        ViewBag.MiEquipo= BD.VerDetalleEquipo(Jug.IdEquipo);
         return View("VerDetalleEquipo");
      }
 
      public IActionResult EliminarJugador(int IdJugador, int IdEquipo)
      {
         BD.EliminarJugador(IdJugador);
-        ViewBag.MiEquipo=BD.VerInfoEquipo(IdEquipo);
+        ViewBag.MiEquipo=BD.VerDetalleEquipo(IdEquipo);
         return View("VerDetalleEquipo");
     }
 
@@ -62,8 +63,6 @@ public class HomeController : Controller
     {
         return View();
     }
-
-    
 
     [ResponseCache(Duration = 0, Location = ResponseCacheLocation.None, NoStore = true)]
     public IActionResult Error()

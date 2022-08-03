@@ -6,86 +6,28 @@
 }
 
 <div class="text-center">
-    <center><h1 class="titulo">EQUIPOS </h1></center>
+    <h1 class="titulo">EQUIPOS </h1>
   
 </div>
-<p > </p>
+
 
 <!--Ubicacion de ft con columnas-->
-          <div class="container">
-            <div class="row">
- 
-              <div class="col-sm">
-             
-              <div class="card" style="width: 18rem;">
-  <img src="camisetaArgentina.jpg" class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">Argentina</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="VerDetalleEquipo.cshtml" class="btn btn-primary"> Ver Equipo</a>
-  </div>
-</div>
-              </div>
- 
-              <div class="col-sm">
-                <!--ft 1 -->
-              <div class="card" style="width: 18rem;">
-  <img src="camisetaBrasil.jpg" class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">Brasil</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="VerDetalleEquipo.cshtml" class="btn btn-primary"> Ver Equipo</a>
-  </div>
-</div>
-             
-              </div>
- 
-              <div class="col-sm">
-            <div class="card" style="width: 18rem;">
-  <img src="camisetaFrancia.jpg" class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">Francia</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="VerDetalleEquipo.cshtml" class="btn btn-primary"> Ver Equipo</a>
-  </div>
-              </div>
- 
+    <div class="container">
+        <div class="row">
+         
+        @foreach(Equipo equipos in ViewBag.Lista){
+        <div class="card card-equipos">
+            <img src="@equipos.Escudo" class="card-img-top">
+            <div class="card-body">
+                <h5 class="card-title">@equipos.Nombre</h5>
+                <p class="card-text"></p>
+                <a href='@Url.Action("VerDetalleEquipo", "Home", new { IdEquipo = @equipos.IdEquipo} )' class="btn btn-primary"> Ver Equipo</a>
             </div>
-          </div>
+        </div> 
+        
 
-             
- <!--Ubicacion de ft con columnas-->
-          <div class="container">
-            <div class="row">
- 
-              <div class="col-sm">
-             
-              <div class="card" style="width: 18rem;">
-  <img src="camisetaAlemania.jpg" class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">Alemania</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="VerDetalleEquipo.cshtml" class="btn btn-primary"> Ver Equipo</a>
-  </div>
-</div>
-              </div>
- 
-              <div class="col-sm">
-                <!--ft 1 -->
-              <div class="card" style="width: 18rem;">
-  <img src="camisetaEspana.jpg" class="card-img-top">
-  <div class="card-body">
-    <h5 class="card-title">España</h5>
-    <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-    <a href="VerDetalleEquipo.cshtml" class="btn btn-primary"> Ver Equipo</a>
-  </div>
-</div>
-             
-    </div>
- 
-              <div class="col-sm">
-            
- 
-            </div>
-          </div>
+    }
+     </div>
+ </div>
+
           

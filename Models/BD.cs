@@ -7,17 +7,17 @@ public class BD
 {
 
     private static string _connectionString = 
-        @"Server=.\SQLEXPRESS;DataBase=Qatar2022;Trusted_Connection=True";
+        @"Server=127.0.0.1;DataBase=Qatar2022;Trusted_Connection=True";
 
     
 
     public static void  AgregarJugador(Jugador Jug)
     {
         
-        string sql = "INSERT INTO Jugadores (IdEquipo,Nombre,FechaNacimiento) VALUES (@pNombre, pIdEquipo, pFechaNacimiento,)";
+        string sql = "INSERT INTO Jugadores (IdEquipo,Nombre,FechaNacimiento) VALUES (@pNombre, pIdEquipo, pFechaNacimiento)";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
-            db.Execute(sql, new { pNombre = Jug.Nombre, pIdEquipo = Jug.IdEquipo,pFechaNacimiento = Jug.FechaNacimiento});
+            db.Execute(sql, new { pNombre = Jug.Nombre, pIdEquipo = Jug.IdEquipo, pFechaNacimiento = Jug.FechaNacimiento});
         } 
         
     }
@@ -30,13 +30,13 @@ public class BD
             db.Execute(sql, new { pIdJugador = IdJugador });
         }
     }
-    public static Equipo VerInfoEquipo(int IdEquipo)
+    public static Equipo VerDetalleEquipo(int IdEquipo)
     {
         Equipo MiEquipo;
        using (SqlConnection db = new SqlConnection(_connectionString))
        {
-        string sql = "SELECT * FROM Equipo WHERE IdEquipo=@pIdEquipo ";
-        MiEquipo= db.QueryFirstOrDefault<Equipo>(sql,new {pIdEquipo=IdEquipo});
+        string sql = "SELECT * FROM Equipos WHERE IdEquipo=@pIdEquipo ";
+        MiEquipo=  db.QueryFirstOrDefault<Equipo>(sql,new {pIdEquipo=IdEquipo});
        
        }
         return MiEquipo;
@@ -52,18 +52,21 @@ public class BD
        }
         return MiJugador;
     }
-    public static List<Equipo>  ListarEquipos()
+    public static List<Equipo> ListarEquipos()
     {
        using (SqlConnection db = new SqlConnection(_connectionString))
        {
+       
         string sql = "SELECT * FROM Equipos";
         return db.Query<Equipo>(sql).ToList();
        
        }
+      
 
     }
     public static List<Jugador> ListarJugadores(int IdEquipo)
     {
+
        using (SqlConnection db = new SqlConnection(_connectionString))
        {
         string sql = "SELECT * FROM Jugadores";

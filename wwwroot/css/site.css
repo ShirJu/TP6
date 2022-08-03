@@ -16,3 +16,10 @@ html {
 body {
   margin-bottom: 60px;
 }
+
+.card-equipos {width:20%}
+
+/* estilos para cuando sea mobile*/
+@media (max-width: 768px) {
+  .card-equipo {width:100%}
+}
