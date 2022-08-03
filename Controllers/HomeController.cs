@@ -39,7 +39,7 @@ public class HomeController : Controller
     {
         ViewBag.Lista = IdEquipo;
 
-         return View("AgregarJugador");
+        return View("AgregarJugador");
     }
 
    [HttpPost] 
