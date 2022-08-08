@@ -77,16 +77,13 @@ public class HomeController : Controller
 
     //form
     [HttpPost]
-    public IActionResult VerDetalleJugador(int idJugador, int idEquipo, string nombre, DateTime fechaNacimiento, IFromFile foto, string equipoActual)
+    public IActionResult VerDetalleJugador( int idEquipo, string nombre, DateTime fechaNacimiento, IFormFile foto, string equipoActual)
      {
         if(foto.Length>0)
         {
             string wwwRootLocal= this.Environment.ContentRootPath + @"\wwwroot\" + foto.FileName;
         }
+        return View("VerDetalleEquipo");
      }
 
-    return View();
-
-
-    
 }

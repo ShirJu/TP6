@@ -5,23 +5,31 @@
 <div class="text-center">
     <h1 class="display-4">Welcome</h1>
     <p>Learn about <a href="https://docs.microsoft.com/aspnet/core">building Web apps with ASP.NET Core</a>.</p>
-
 </div>
 <p > </p>
 
 <form action='Url.Action("VerDetalleJugador", "Home")' method="POST" enctype="multipart/from-data">
+
   <div class="form-group">
-    <label for="exampleInputtext1">Ingrese el equipo del Jugador</label>
-    <input type="text" hidden class="form-control" id="exampleInputHidden1">
+    <input type="hidden" name="IdEquipo" class="form-control" id="exampleInputHidden1">
   </div>
+
   <div class="form-group">
     <label for="exampleInputname1">Ingresen el nombre del jugador</label>
-    <input type="name" class="form-control" id="exampleInputname1">
+    <input type="text" name="nombre" class="form-control" id="exampleInputname1">
   </div>
+
   <div class="form-group">
     <label for="exampleInputdatetime1">Ingresen la fecha de nacimiento del jugador</label>
-    <input type="datetime" class="form-control" id="exampleInputdatetime1">
+    <input type="datetime" name="fechaNacimiento" class="form-control" id="exampleInputdatetime1">
   </div>
+
   <input type="file" name="foto">
-  <button type="submit" class="btn btn-primary">Guardar Jugador</button>
+
+  <div class="form-group">
+    <label for="exampleInputname1">Ingresen el equipo actual del jugador</label>
+    <input type="text" name="equipoActual" class="form-control" id="exampleInputname1">
+  </div>
+  
+  <button  type="submit" class="btn btn-primary">Guardar Jugador</button>
 </form>
