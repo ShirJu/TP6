@@ -1,16 +1,22 @@
 ﻿using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TP6.Models;
+using System.IO;
+using Microsoft.AspNetCore.Hosting;
 
 namespace TP6.Controllers;
 
 public class HomeController : Controller
 {
+    //form
+    private IWebHostEnvironment Environment;
+
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger)
+    public HomeController(ILogger<HomeController> logger, IWebHostEnvironment environment)
     {
         _logger = logger;
+        Environment=environment;
     }
 
     public IActionResult Index()
@@ -22,9 +28,8 @@ public class HomeController : Controller
     public IActionResult VerDetalleEquipo(int IdEquipo)
     {
           ViewBag.DetalleEquipo = BD.VerDetalleEquipo(IdEquipo);
-        ViewBag.ListaJugadores = BD.ListarJugadores(IdEquipo);
+          ViewBag.ListaJugadores = BD.ListarJugadores(IdEquipo);
       
-
         return View("VerDetalleEquipo");
     }
 
@@ -70,8 +75,17 @@ public class HomeController : Controller
         return View(new ErrorViewModel { RequestId = Activity.Current?.Id ?? HttpContext.TraceIdentifier });
     }
 
-     
+    //form
+    [HttpPost]
+    public IActionResult VerDetalleJugador(int idJugador, int idEquipo, string nombre, DateTime fechaNacimiento, IFromFile foto, string equipoActual)
+     {
+        if(foto.Length>0)
+        {
+            string wwwRootLocal= this.Environment.ContentRootPath + @"\wwwroot\" + foto.FileName;
+        }
+     }
 
+    return View();
 
 
     
