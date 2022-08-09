@@ -23,3 +23,25 @@ body {
 @media (max-width: 768px) {
   .card-equipo {width:100%}
 }
+
+body
+{
+  color: aliceblue;
+  background-color: #8a1d3ec4;
+}
+
+.home {
+  color: aliceblue ;
+  text-decoration: none;
+}
+.home:hover{
+  text-decoration: solid;
+}
+.orden
+{
+   float: left;
+}
+titulodecard
+{
+  color: rgba(194, 60, 60, 0.719);
+}

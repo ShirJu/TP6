@@ -7,34 +7,29 @@
 
         <a href='@Url.Action("AgregarJugador", new { IdEquipo = @ViewBag.DetalleEquipo.IdEquipo} )' class="btn btn-primary"> Crear Jugador</a>
         
-       
- @foreach(Jugador Nombre in ViewBag.ListaJugadores){
-         <table class="table">
-  <thead>
-    <tr>
-      <th scope="col"></th>
-      <th scope="col">Nombre Del Jugador</th>
-      <th scope="col">Vea los detalles del Jugador</th>
-      
-    </tr>
-  </thead>
-  <tbody>
-    <tr>
-      <th scope="row">1</th>
-      <td>@Nombre.Nombre</td>
-      
-      
-    </tr>
-    <tr>
-      <th scope="row">2</th>
-      <td><a href='@Url.Action("VerDetalleJugador", new { IdJugador = @ViewBag.DetalleJugador.IdJugador, IdEquipo = @ViewBag.DetalleEquipo.IdEquipo} )' class="btn btn-primary"> Ver Detalles</a></td>
-      
-      
-    </tr>
-    
-  </tbody>
-</table>
-        
+        <table class="table table-striped">
 
-    }
+<thead>
+    <td>Id Jugador</td>
+    <td>Nombre</td>
+    <td>Foto</td>
+</thead>
+
+
+@foreach(Jugador p in ViewBag.Lista){
+    <tr>
+        <td>@p.idJugador</td>
+        <td>@p.Nombre</td>
+        <td><img src="@p.Foto" width="50%" height="30%" alt=""></td>
+        
+        <td>
+            <a type="button" class="btn btn-danger" href='@Url.Action("VerDetalleJugador", new { id = @p.idJugador } )'>
+                Ver Detalles
+            </a>
+        </td>
+    </tr>
+}
+
+</table>
+  
      

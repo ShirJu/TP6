@@ -40,7 +40,7 @@ public class HomeController : Controller
         return View("VerDetalleJugador");
     }
 
-    public IActionResult AgregarJugador(int IdEquipo)
+    public IActionResult AgregarJugador(int IdEquipo, string Nombre, DateTime FechaNacimiento, IFormFile Foto, int EquipoActual )
     {
         ViewBag.Lista = IdEquipo;
 
@@ -49,13 +49,10 @@ public class HomeController : Controller
 
    [HttpPost] 
 
-   public IActionResult GuardarJugador(Jugador Jug)
-     {
-        BD.AgregarJugador(Jug);
-         
-        ViewBag.MiEquipo= BD.VerDetalleEquipo(Jug.IdEquipo);
-        return View("VerDetalleEquipo");
-     }
+   //public IActionResult GuardarJugador(Jugador Jug)
+     //{
+        
+    // }
 
      public IActionResult EliminarJugador(int IdJugador, int IdEquipo)
      {
@@ -77,13 +74,22 @@ public class HomeController : Controller
 
     //form
     [HttpPost]
-    public IActionResult VerDetalleJugador( int idEquipo, string nombre, DateTime fechaNacimiento, IFormFile foto, string equipoActual)
+    public IActionResult GuardarJugador(Jugador Jug, int idEquipo, string nombre, DateTime fechaNacimiento, IFormFile foto, string equipoActual)
      {
+        /*
         if(foto.Length>0)
         {
             string wwwRootLocal= this.Environment.ContentRootPath + @"\wwwroot\" + foto.FileName;
         }
-        return View("VerDetalleEquipo");
+        */
+
+        BD.AgregarJugador(Jug);
+         
+        ViewBag.MiEquipo= BD.VerDetalleEquipo(Jug.IdEquipo);
+        ViewBag.ListaJugadores = BD.ListarJugadores(Jug.IdEquipo);
+
+        return Redirect(Url.Action("VerDetalleEquipo", "Home", new {IdEquipo = Jug.IdEquipo}));
+
      }
 
 }

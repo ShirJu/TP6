@@ -14,13 +14,15 @@ public class BD
     public static void  AgregarJugador(Jugador Jug)
     {
         
-        string sql = "INSERT INTO Jugadores (IdEquipo,Nombre,FechaNacimiento) VALUES (@pNombre, pIdEquipo, pFechaNacimiento)";
+        string sql = "INSERT INTO Jugadores (IdEquipo,Nombre,FechaNacimiento) VALUES (@pNombre, @pIdEquipo, @pFechaNacimiento)";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
             db.Execute(sql, new { pNombre = Jug.Nombre, pIdEquipo = Jug.IdEquipo, pFechaNacimiento = Jug.FechaNacimiento});
         } 
         
     }
+
+
 
     public static void EliminarJugador(int IdJugador)
     {

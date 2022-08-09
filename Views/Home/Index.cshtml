@@ -5,6 +5,7 @@
     ViewData["Title"] = "Home Page";
 }
 
+
 <div class="text-center">
     <h1 class="titulo">EQUIPOS </h1>
   
@@ -13,21 +14,26 @@
 
 <!--Ubicacion de ft con columnas-->
     <div class="container">
-        <div class="row">
-         
+        <div class="row row-cols-1 row-cols-md-3 g-4"> 
+           
+                
         @foreach(Equipo equipos in ViewBag.Lista){
-        <div class="card card-equipos">
+       
+            <div class="card card-equipos">
             <img src="@equipos.Escudo" class="card-img-top">
             <div class="card-body">
-                <h5 class="card-title">@equipos.Nombre</h5>
+                <h5 class="card-title" class="titulodecard">@equipos.Nombre</h5>
                 <p class="card-text"></p>
                 <a href='@Url.Action("VerDetalleEquipo", "Home", new { IdEquipo = @equipos.IdEquipo} )' class="btn btn-primary"> Ver Equipo</a>
             </div>
-        </div> 
-        
+            </div>  
 
+            
+            
     }
+  
      </div>
  </div>
 
+ 
           
