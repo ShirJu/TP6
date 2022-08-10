@@ -12,9 +12,10 @@ public class BD
     public static void  GuardarJugador(Jugador Jug)
     {
         
-        string sql = "INSERT INTO Jugadores ( IdEquipo,Nombre,FechaNacimiento,Foto,EquipoActual) VALUES (@pIdEquipo, @pNombre,  @pFechaNacimiento, @pFoto, @pEquipoActual)";
+        string sql = "INSERT INTO Jugadores (IdEquipo,Nombre,FechaNacimiento,Foto,EquipoActual) VALUES (@pIdEquipo, @pNombre,  @pFechaNacimiento, @pFoto, @pEquipoActual)";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
+            //crea un nuevo jugador en la base de datos con los valores de jug
             db.Execute(sql, new {  pIdEquipo = Jug.IdEquipo, pNombre = Jug.Nombre, pFechaNacimiento = Jug.FechaNacimiento, pFoto = Jug.Foto, pEquipoActual=Jug.EquipoActual});
         } 
         
