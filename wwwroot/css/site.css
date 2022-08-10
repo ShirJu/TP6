@@ -45,3 +45,17 @@ titulodecard
 {
   color: rgba(194, 60, 60, 0.719);
 }
+.titulo
+{
+ 
+   font-size: 80px;
+   font-style: oblique;
+   font-weight: 800;
+  
+  
+}
+.orden
+{
+   margin: 3px;
+}
+

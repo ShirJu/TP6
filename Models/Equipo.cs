@@ -9,9 +9,8 @@ public class Equipo
     private string _continente;
     private int _copasGanadas;
 
-    public Equipo(int idEquipo, string nombre, string escudo, string camiseta, string continente, int copasGanadas)
+    public Equipo(string nombre, string escudo, string camiseta, string continente, int copasGanadas)
     {
-        _idEquipo = idEquipo;
         _nombre = nombre;
         _escudo = escudo;
         _camiseta = camiseta;

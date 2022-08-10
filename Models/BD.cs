@@ -9,15 +9,13 @@ public class BD
     private static string _connectionString = 
         @"Server=127.0.0.1;DataBase=Qatar2022;Trusted_Connection=True";
 
-    
-
     public static void  GuardarJugador(Jugador Jug)
     {
         
-        string sql = "INSERT INTO Jugadores (IdEquipo,Nombre,FechaNacimiento) VALUES (@pIdEquipo, @pNombre,  @pFechaNacimiento)";
+        string sql = "INSERT INTO Jugadores ( IdEquipo,Nombre,FechaNacimiento,Foto,EquipoActual) VALUES (@pIdEquipo, @pNombre,  @pFechaNacimiento, @pFoto, @pEquipoActual)";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
-            db.Execute(sql, new {  pIdEquipo = Jug.IdEquipo, pNombre = Jug.Nombre, pFechaNacimiento = Jug.FechaNacimiento});
+            db.Execute(sql, new {  pIdEquipo = Jug.IdEquipo, pNombre = Jug.Nombre, pFechaNacimiento = Jug.FechaNacimiento, pFoto = Jug.Foto, pEquipoActual=Jug.EquipoActual});
         } 
         
     }

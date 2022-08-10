@@ -13,9 +13,8 @@ public class HomeController : Controller
 
     private readonly ILogger<HomeController> _logger;
 
-    public HomeController(ILogger<HomeController> logger, IWebHostEnvironment environment)
+    public HomeController(IWebHostEnvironment environment)
     {
-        _logger = logger;
         Environment=environment;
     }
 
@@ -74,19 +73,24 @@ public class HomeController : Controller
 
     //form
     [HttpPost]
-    public IActionResult GuardarJugador(Jugador Jug, IFormFile foto)
+    public IActionResult GuardarJugador(int IdEquipo, string Nombre, DateTime FechaNacimiento, IFormFile Foto, string EquipoActual)
      {
-        /*
-        if(foto.Length>0)
+        
+        if(Foto.Length>0)
         {
-            string wwwRootLocal= this.Environment.ContentRootPath + @"\wwwroot\" + foto.FileName;
+            string wwwRootLocal= this.Environment.ContentRootPath + @"\wwwroot\" + Foto.FileName;
+            using(var stream=System.IO.File.Create(wwwRootLocal))
+            {
+                Foto.CopyToAsync(stream);
+            }
         }
-        */
 
+        //crea un nuevo jugador con los datos pasados por parametros
+        Jugador Jug= new Jugador(IdEquipo, Nombre, FechaNacimiento,(""+ Foto.FileName), EquipoActual);
+        //manda al jugador Jug a la base de datos
         BD.GuardarJugador(Jug);
-         
-       
-        return Redirect(Url.Action("VerDetalleEquipo", "Home", new {IdEquipo = Jug.IdEquipo}));
+         //Redirecciona a VerDetalleEquipo para ver al jugador en la tabla y pasa el IdEquipo
+        return RedirectToAction(Url.Action("VerDetalleEquipo", "Home", new {IdEquipo = IdEquipo}));
 
      }
 

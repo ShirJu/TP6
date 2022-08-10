@@ -6,25 +6,24 @@
 
 <form action='@Url.Action("GuardarJugador", "Home")' method="post" enctype="multipart/from-data">
 
-<input type="hidden" name="idEquipo" value="@ViewBag.IdEquipo">
+<input class="form-control" type="hidden" name="IdEquipo" value="@ViewBag.IdEquipo">
 
   <div class="form-group">
     <label for="exampleInputname1">Ingresen el nombre del jugador</label>
-    <input type="text" name="nombre" class="form-control" id="exampleInputname1">
+    <input type="text" name="Nombre" class="form-control" id="exampleInputname1" required>
   </div>
 
   <div class="form-group">
     <label for="exampleInputdatetime1">Ingresen la fecha de nacimiento del jugador</label>
-    <input type="date" name="fechaNacimiento" class="form-control" id="exampleInputdatetime1">
+    <input type="date" name="FechaNacimiento" class="form-control" id="exampleInputdatetime1" required>
   </div>
 
-  <input type="file" name="foto">
+  <input class="forma-cntrol-file" type="file" name="Foto" required>
 
   <div class="form-group">
     <label for="exampleInputname1">Ingresen el equipo actual del jugador</label>
-    <input type="text" name="equipoActual" class="form-control" id="exampleInputname1">
+    <input type="text" name="EquipoActual" class="form-control" id="exampleInputname1" required>
   </div>
-  
   <button  type="submit" class="btn btn-primary">Guardar Jugador</button>
 </form>
 
