@@ -11,13 +11,13 @@ public class BD
 
     
 
-    public static void  AgregarJugador(Jugador Jug)
+    public static void  GuardarJugador(Jugador Jug)
     {
         
-        string sql = "INSERT INTO Jugadores (IdEquipo,Nombre,FechaNacimiento) VALUES (@pNombre, @pIdEquipo, @pFechaNacimiento)";
+        string sql = "INSERT INTO Jugadores (IdEquipo,Nombre,FechaNacimiento) VALUES (@pIdEquipo, @pNombre,  @pFechaNacimiento)";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
-            db.Execute(sql, new { pNombre = Jug.Nombre, pIdEquipo = Jug.IdEquipo, pFechaNacimiento = Jug.FechaNacimiento});
+            db.Execute(sql, new {  pIdEquipo = Jug.IdEquipo, pNombre = Jug.Nombre, pFechaNacimiento = Jug.FechaNacimiento});
         } 
         
     }
