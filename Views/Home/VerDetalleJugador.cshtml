@@ -1,0 +1,7 @@
+<h1>Detalle Equipo</h1>
+        <h1>@ViewBag.DatosJugador.Nombre</h1>
+        <img src=/@ViewBag.DatosJugador.Foto width=auto height=160px>
+        <h1>@ViewBag.DatosJugador.FechaNacimiento</h1>
+        <h1>@ViewBag.DatosJugador.EquipoActual</h1>
+        <a href='@Url.Action("VerDetalleEquipo", "Home", new { IdEquipo = @ViewBag.DatosJugador.IdEquipo} )' class="btn btn-primary"> Volver</a>
+        

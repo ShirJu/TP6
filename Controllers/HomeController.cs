@@ -1,4 +1,4 @@
-﻿using System.Diagnostics;
+using System.Diagnostics;
 using Microsoft.AspNetCore.Mvc;
 using TP6.Models;
 using System.IO;
@@ -32,10 +32,10 @@ public class HomeController : Controller
         return View("VerDetalleEquipo");
     }
 
-    public IActionResult VerDetalleJugador(int IdJugador)
+    public IActionResult VerDetalleJugador(int idJugador)
     {
-        ViewBag.DatosJugador = BD.VerInfoJugador(IdJugador);
-
+        ViewBag.DatosJugador = BD.VerInfoJugador(idJugador);
+        
         return View("VerDetalleJugador");
     }
 
@@ -47,11 +47,6 @@ public class HomeController : Controller
     }
 
    [HttpPost] 
-
-   //public IActionResult GuardarJugador(Jugador Jug)
-     //{
-        
-    // }
 
      public IActionResult EliminarJugador(int IdJugador, int IdEquipo)
      {
@@ -75,9 +70,10 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult GuardarJugador(int IdEquipo, string Nombre, DateTime FechaNacimiento, IFormFile Foto, string EquipoActual)
      {
-        
+         
         if(Foto.Length>0)
         {
+            
             string wwwRootLocal= this.Environment.ContentRootPath + @"\wwwroot\" + Foto.FileName;
             using(var stream=System.IO.File.Create(wwwRootLocal))
             {
@@ -92,6 +88,7 @@ public class HomeController : Controller
          //Redirecciona a VerDetalleEquipo para ver al jugador en la tabla y pasa el IdEquipo
         return RedirectToAction(Url.Action("VerDetalleEquipo", "Home", new {IdEquipo = IdEquipo}));
 
+       
      }
 
 }

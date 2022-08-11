@@ -1,11 +1,11 @@
 <h1>Detalle Equipo</h1>
-        <h1>@ViewBag.DetalleEquipo.Nombre</h1>
+        <h1 class= "nombreEuipo">@ViewBag.DetalleEquipo.Nombre</h1>
         <img src=/@ViewBag.DetalleEquipo.Escudo width=auto height=160px>
         <img src=/@ViewBag.DetalleEquipo.Camiseta width=auto height=160px>
         <h1>@ViewBag.DetalleEquipo.Continente</h1>
         <h1>@ViewBag.DetalleEquipo.CopasGanadas</h1>
 
-        <a href='@Url.Action("AgregarJugador", new { IdEquipo = @ViewBag.DetalleEquipo.IdEquipo} )' class="btn btn-primary"> Crear Jugador</a>
+        <a href='@Url.Action("AgregarJugador", "Home", new { IdEquipo = @ViewBag.DetalleEquipo.IdEquipo} )' class="btn btn-primary"> Crear Jugador</a>
         
         <table class="table table-striped">
 
@@ -16,14 +16,16 @@
 </thead>
 
 
-@foreach(Jugador p in ViewBag.ListaJugadores){
+@foreach(Jugador p in @ViewBag.ListaJugadores){
     <tr>
         <td>@p.idJugador</td>
         <td>@p.Nombre</td>
         <td><img src="@p.Foto" width="50%" height="30%" alt=""></td>
         
         <td>
-            <a type="button" class="btn btn-danger" href='@Url.Action("VerDetalleJugador", new { IdJugador = @p.idJugador } )'>
+            <!--le paso los id al controller-->
+            
+            <a type="button" class="btn btn-danger" href='@Url.Action("VerDetalleJugador", "Home", new { idJugador = @p.idJugador } )'>
                 Ver Detalles
             </a>
         </td>

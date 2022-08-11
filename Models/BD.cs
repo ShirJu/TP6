@@ -5,7 +5,7 @@ using System.Collections.Generic;
 
 public class BD 
 {
-
+    private static List<Jugador> _ListadoJugadores = new List<Jugador>();
     private static string _connectionString = 
         @"Server=127.0.0.1;DataBase=Qatar2022;Trusted_Connection=True";
 
@@ -70,8 +70,10 @@ public class BD
 
        using (SqlConnection db = new SqlConnection(_connectionString))
        {
-        string sql = "SELECT * FROM Jugadores";
-       return db.Query<Jugador>(sql).ToList();
+        string sql = "SELECT * FROM Jugadores where IdEquipo=@pIdEquipo";
+        _ListadoJugadores =db.Query<Jugador>(sql,new{pidEquipo=IdEquipo}).ToList();
+       
        }
+       return _ListadoJugadores;
     }
 }

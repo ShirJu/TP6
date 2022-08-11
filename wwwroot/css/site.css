@@ -31,8 +31,11 @@ body
 }
 
 .home {
+  font-variant-position: normal;
   color: aliceblue ;
   text-decoration: none;
+  font-size: 25px;
+
 }
 .home:hover{
   text-decoration: solid;
@@ -41,10 +44,7 @@ body
 {
    float: left;
 }
-titulodecard
-{
-  color: rgba(194, 60, 60, 0.719);
-}
+
 .titulo
 {
  
@@ -57,5 +57,11 @@ titulodecard
 .orden
 {
    margin: 3px;
+}
+.card-equipos
+{
+ color: #b91849;
+ margin: 30px;
+ padding: 10px;
 }
 
