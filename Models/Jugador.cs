@@ -29,7 +29,7 @@ public class Jugador
         
     }
 
-     public int idJugador
+     public int IdJugador
     {
         get
         {

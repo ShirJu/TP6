@@ -19,9 +19,10 @@ a {
 }
 
 .nav-pills .nav-link.active, .nav-pills .show > .nav-link {
-  color: #fff;
+  color: rgb(56, 43, 43);
   background-color: #1b6ec2;
   border-color: #1861ac;
+  
 }
 
 .border-top {
@@ -49,8 +50,8 @@ button.accept-policy {
 }
 .logo
 {
-margin: 0%;
-padding: 0%;
+  margin: 0%;
+  padding: 0%;
   width: 100px;
   height: 100px;;
   float: left;

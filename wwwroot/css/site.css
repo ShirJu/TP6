@@ -1,5 +1,9 @@
 html {
   font-size: 14px;
+  /* hace que el footer se antenga al pie de la pagina*/
+  position: relative;
+  min-height: 100%;
+  
 }
 
 @media (min-width: 768px) {
@@ -8,17 +12,6 @@ html {
   }
 }
 
-html {
-  position: relative;
-  min-height: 100%;
-}
-
-body {
-  margin-bottom: 60px;
-}
-
-.card-equipos {width:20%}
-
 /* estilos para cuando sea mobile*/
 @media (max-width: 768px) {
   .card-equipo {width:100%}
@@ -26,51 +19,151 @@ body {
 
 body
 {
-  color: aliceblue;
-  background-color: #8a1d3ec4;
+  color: #f0f8ff;
+  background-color:#5f0a27;
+  background-position:center;
+	background-image: url("fondo.jpg");
+	background-repeat:no-repeat;
+  /* aleja del footer*/
+  margin-bottom: 60px;
 }
 
 .home {
   font-variant-position: normal;
-  color: aliceblue ;
+  color: rgb(60, 104, 143) ;
   text-decoration: none;
-  font-size: 25px;
-
 }
+
+.tamanoHome
+{
+  font-size: 30px;
+}
+
 .home:hover{
   text-decoration: solid;
 }
-.orden
-{
-   float: left;
+
+/*View Index */
+
+@font-face{
+  font-family:'Bienvenidos';
+  src: url(Tipografia-RubikDirt-Regular.ttf);
 }
 
+.textBienvenidos
+{
+  font-size: 50px;
+  font-family:'Bienvenidos'; 
+  text-align: center;
+  margin: 30px;
+  
+}
+
+.imagenPortada
+{
+  float:left;
+  width: 1125px;
+  height: auto;
+  align-content: center;
+  padding: 30px;
+}
+
+/* Titulo Equipos*/
 .titulo
 {
- 
-   font-size: 80px;
-   font-style: oblique;
-   font-weight: 800;
-  
+   font-size: 50px;
+   font-family:'Bienvenidos'; 
+   margin: 30px;
+   text-align: center;
   
 }
-.orden
-{
-   margin: 3px;
-}
+
 .card-equipos
 {
- color: #b91849;
- margin: 30px;
- padding: 10px;
+  width:20%;
+ /*color del titulo */
+ color: #5f0a27;
+ text-align: center;
+ /* distansiamiento entre las cards*/
+ margin: 70px;
+ 
+}
 
+/* View VerDetalleEuipo */
+/* el nombre del pais tiene el mismo contenido que .titulo */
+.imagenesEscudo
+{
+  float:left;
+  width: 500px;
+  height:auto;
 }
-.nombreEquipo
+
+.imagenesCamiseta
+{
+  padding-left: 200px;
+  width: 450px;
+  height:auto;
+}
+
+.allado
+{
+  display:flex; 
+  width:100%;
+	justify-content: space-between;
+}
+
+.pie1
+{
+ margin-left: 11%;
+ text-align:center;
+ width: 20%;
+}
+
+.pie2
+{
+  padding-left: 200px;
+  float: right;
+	width: 50%;
+}
+ 
+
+.datos
+{
+  text-align: center;
+  margin: 10px;
+  padding: 10px;
+}
+
+.tabla
+{
+  margin: 10px;
+  padding: 10px;
+  background-color: #f0f8ff;
+  border-radius: 20%;
+  text-align: center;
+}
+
+
+/* View AgregarJugador */
+.ingresodedatos
 {
   text-align: center;
 }
-.imagenesEquipo
+.Jugadores
 {
-  text-align: center;
   
+  width: 1125px;
+  height: auto;
+  align-content: center;
+  padding: 30px;
+}
+
+/* View Detalle Jugador */
+/* el titulo tiene el mismo contenido que .titulo */
+.fotojugador
+{
+  border-radius: 10%;
+  text-align:middle;
+  width: 500px;
+  height:auto;
 }

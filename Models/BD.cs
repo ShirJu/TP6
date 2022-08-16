@@ -7,7 +7,7 @@ public class BD
 {
     private static List<Jugador> _ListadoJugadores = new List<Jugador>();
     private static string _connectionString = 
-        @"Server=127.0.0.1;DataBase=Qatar2022;Trusted_Connection=True";
+        @"Server=A-PHZ2-AMI-003;DataBase=Qatar2022;Trusted_Connection=True";
 
     public static void  GuardarJugador(Jugador Jug)
     {
@@ -21,16 +21,16 @@ public class BD
         
     }
 
-
-
-    public static void EliminarJugador(int IdJugador)
+    public static int EliminarJugador(int IdJugador)
     {
+        
         string sql = "DELETE FROM Jugadores WHERE IdJugador = @pIdJugador";
         using(SqlConnection db = new SqlConnection(_connectionString))
         {
-            db.Execute(sql, new { pIdJugador = IdJugador });
+            return db.Execute(sql, new { pIdJugador = IdJugador });
         }
     }
+    
     public static Equipo VerDetalleEquipo(int IdEquipo)
     {
         Equipo MiEquipo;

@@ -1,38 +1,50 @@
-
-        <h1 class="nombreEquipo">@ViewBag.DetalleEquipo.Nombre</h1>
-        <div class="imagenesEquipo"><img src=/@ViewBag.DetalleEquipo.Escudo width=50% height=auto></div>
-        <h1 class="nombreEquipo" >Camiseta</h1>
-        <div class="imagenesEquipo"></div><img src=/@ViewBag.DetalleEquipo.Camiseta width=50% height=auto></div>
-        <h1>@ViewBag.DetalleEquipo.Continente</h1>
-        <h1>@ViewBag.DetalleEquipo.CopasGanadas</h1>
-
-        <a href='@Url.Action("AgregarJugador", "Home", new { IdEquipo = @ViewBag.DetalleEquipo.IdEquipo} )' class="btn btn-primary"> Crear Jugador</a>
+<link rel="stylesheet" type="text/css" href="site.css">
+        <h1 class="titulo">@ViewBag.DetalleEquipo.Nombre</h1>
+        <img class="imagenesEscudo"  src=/@ViewBag.DetalleEquipo.Escudo>
+        <img class="imagenesCamiseta" src=/@ViewBag.DetalleEquipo.Camiseta>
+        <div class="allado">
+        <h1 class="pie1">Escudo</h1>
+        <h1 class="pie2" >Camiseta </h1>
+        </div>
         
-        <table class="table table-striped">
+        <h1 class="datos">Continente: @ViewBag.DetalleEquipo.Continente</h1>
+        <h1 class="datos">Copas ganadas: @ViewBag.DetalleEquipo.CopasGanadas</h1>
+   
+        <a href='@Url.Action("AgregarJugador", "Home", new { IdEquipo = @ViewBag.DetalleEquipo.IdEquipo} )' class="btn btn-primary"> Crear Jugador</a>
+        <br>
+    <table class=" table table-striped">
 
-<thead>
+ 
+    <thead class="tabla">
     <td>Id Jugador</td>
     <td>Nombre</td>
     <td>Foto</td>
     <td>Para curiosos</td>
-</thead>
+    <td>Eliminar</td>
+    
+    </thead>
 
 
 @foreach(Jugador p in @ViewBag.ListaJugadores){
-    <tr>
-        <td>@p.idJugador</td>
+    <tr class="tabla">
+        <td class="nombreJug">@p.IdJugador</td>
         <td>@p.Nombre</td>
         <td><img src="/@p.Foto" width="50%" height="30%" alt=""></td>
         
         <td>
             <!--le paso los id al controller-->
             
-            <a type="button" class="btn btn-danger" href='@Url.Action("VerDetalleJugador", "Home", new { idJugador = @p.idJugador } )'>
+            <a type="button" class="btn btn-danger" href='@Url.Action("VerDetalleJugador", "Home", new { IdJugador = @p.IdJugador } )'>
                 Ver Detalles
             </a>
         </td>
-    </tr>
+        <td> <a href='@Url.Action("EliminarJugador","Home",new {idJugador = @p.IdJugador, IdEquipo = @p.IdEquipo})'
+              class="btn btn-danger">Eliminar Jugador</td>
+          </tr>
+        
+   
 }
+
 
 </table>
   

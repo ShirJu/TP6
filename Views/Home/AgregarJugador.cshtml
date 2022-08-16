@@ -1,13 +1,15 @@
 @{
     ViewData["Title"] = "Home Page";
 }
+<!--SE LO PASA A LA ACCION DEL controller QUE LO VA A MANDAR A LA VIEW-->
+<center><img class="Jugadores" src="/Jugadores.jpg" ></center>
 
-<p > </p>
 
+<h1 class="ingresodedatos">INGRESE LOS DATOS PEDIDOS A CONTINUACION PARA AGREGAR UN NUEVO JUGADOR AL EQUIPO</h1>
+<div >
 <form action='@Url.Action("GuardarJugador", "Home")' method="post" enctype="multipart/form-data">
 
-
-<input class="form-control" type="hidden" name="IdEquipo" value="@ViewBag.IdEquipo">
+  <input class="form-control" type="hidden" name="IdEquipo" value="@ViewBag.IdEquipo">
 
   <div class="form-group">
     <label for="exampleInputname1">Ingresen el nombre del jugador</label>
@@ -27,6 +29,7 @@
   </div>
   <button  type="submit" class="btn btn-primary">Guardar Jugador</button>
 </form>
+</div>
 
 
 

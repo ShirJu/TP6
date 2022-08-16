@@ -32,27 +32,26 @@ public class HomeController : Controller
         return View("VerDetalleEquipo");
     }
 
-    public IActionResult VerDetalleJugador(int idJugador)
+    public IActionResult VerDetalleJugador(int IdJugador)
     {
-        ViewBag.DatosJugador = BD.VerInfoJugador(idJugador);
+        ViewBag.DatosJugador = BD.VerInfoJugador(IdJugador);
         
         return View("VerDetalleJugador");
     }
 
-    public IActionResult AgregarJugador(int IdEquipo )
+    public IActionResult AgregarJugador(int IdEquipo)
     {
         ViewBag.IdEquipo = IdEquipo;
 
         return View("AgregarJugador");
     }
 
-   [HttpPost] 
+   
 
-     public IActionResult EliminarJugador(int IdJugador, int IdEquipo)
-     {
-        BD.EliminarJugador(IdJugador);
-        ViewBag.MiEquipo=BD.VerDetalleEquipo(IdEquipo);
-        return View("VerDetalleEquipo");
+    public IActionResult EliminarJugador(int IdEquipo, int IdJugador)
+    {
+       BD.EliminarJugador(IdJugador);
+       return RedirectToAction("VerDetalleEquipo", new {IdEquipo=IdEquipo});
     }
 
     public IActionResult Privacy()
@@ -70,10 +69,8 @@ public class HomeController : Controller
     [HttpPost]
     public IActionResult GuardarJugador(int IdEquipo, string Nombre, DateTime FechaNacimiento, IFormFile Foto, string EquipoActual)
      {
-         
         if(Foto.Length>0)
-        {
-            
+        { 
             string wwwRootLocal= this.Environment.ContentRootPath + @"\wwwroot\" + Foto.FileName;
             using(var stream=System.IO.File.Create(wwwRootLocal))
             {
@@ -81,12 +78,12 @@ public class HomeController : Controller
             }
         }
 
-        //crea un nuevo jugador con los datos pasados por parametros
+        //crea un nuevo jugador con los datos pasados por parametros EN JUG
         Jugador Jug= new Jugador(IdEquipo, Nombre, FechaNacimiento,(""+ Foto.FileName), EquipoActual);
         //manda al jugador Jug a la base de datos
         BD.GuardarJugador(Jug);
          //Redirecciona a VerDetalleEquipo para ver al jugador en la tabla y pasa el IdEquipo
-        return RedirectToAction(Url.Action("VerDetalleEquipo", "Home", new {IdEquipo = IdEquipo}));
+        return RedirectToAction("VerDetalleEquipo", "Home", new {IdEquipo = IdEquipo});
 
        
      }
